@@ -17,7 +17,8 @@ class Client:
                  last_name: str,
                  email_address: str):
         """
-        Initializes a client object based on the received arguments (if valid).
+        Initializes a client object based on the received
+        arguments (if valid).
         Args:
             client_number (int): An integer value representing the client number. 
             first_name (str): A string value the client's first name.
@@ -31,7 +32,8 @@ class Client:
                 - last_name is blank
         
         Notes:
-            - The email address is validated by the function called validate_email
+            - The email address is validated by the function called
+              validate_email
               but if the email is invalid then by default a valid email will be 
               assigned to it.
         """
@@ -56,7 +58,7 @@ class Client:
         try:
             validated_email = validate_email(email_address,
                                              check_deliverability = False)
-            self.__email_address = validated_email.display_name
+            self.__email_address = validated_email.normalized
             
         except EmailNotValidError:
             self.__email_address = "email@pixell-river.com"
