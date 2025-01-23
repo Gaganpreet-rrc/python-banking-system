@@ -17,6 +17,7 @@ class Client:
                  last_name: str,
                  email_address: str):
         """
+        
         """
         if isinstance(client_number, int):
             self.__client_number = client_number
@@ -43,3 +44,41 @@ class Client:
             
         except EmailNotValidError:
             self.__email_address = "email@pixell-river.com"
+            
+    @property
+    def client_number(self) -> int:
+        """
+
+        """
+        return self.__client_number
+        
+    @property
+    def first_name (self) -> str:
+        """
+
+        """
+        return self.__first_name
+        
+    @property
+    def last_name (self) -> str:
+        """
+
+        """
+        return self.__last_name
+        
+    @property
+    def email_address (self) -> str:
+        """
+
+        """
+        return self.__email_address
+        
+        
+    def __str__ (self) -> str:
+        """
+
+        """
+        return (f"{self.__last_name}, "
+                + f"{self.__first_name} "
+                + f"[{self.__client_number}] "
+                + f"- {self.__email_address}")
