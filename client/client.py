@@ -19,11 +19,14 @@ class Client:
         """
         Initializes a client object based on the received
         arguments (if valid).
+        
         Args:
-            client_number (int): An integer value representing the client number. 
+            client_number (int): An integer value representing 
+            the client number. 
             first_name (str): A string value the client's first name.
             last_name (str): A string value the client's last name.
-            email_address (str): A string value the client's email address.
+            email_address (str): A string value the client's email 
+            address.
             
         Raises:
             ValueError: if any of the arguments are invalid.
@@ -34,8 +37,8 @@ class Client:
         Notes:
             - The email address is validated by the function called
               validate_email
-              but if the email is invalid then by default a valid email will be 
-              assigned to it.
+              but if the email is invalid then by default a valid 
+              email will be assigned to it.
         """
         if isinstance(client_number, int):
             self.__client_number = client_number
@@ -69,7 +72,8 @@ class Client:
         Accessor for the client_number attribute.
         
         Returns:
-            int: The client_number associated with the Client instance.
+            int: The client_number associated with the 
+            Client instance.
         """
         return self.__client_number
         

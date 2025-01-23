@@ -14,7 +14,10 @@ from email_validator import validate_email, EmailNotValidError
 class TestClient(unittest.TestCase):
     
     def setUp(self):
-        self.client = Client(10, "Raman", "Kaur", "raman@pixell-river.com")
+        self.client = Client(10, 
+                             "Raman",
+                             "Kaur",
+                             "raman@pixell-river.com")
     
     def test_init_valid_arguments_attributes_set(self):
         # Arrange & Act
@@ -23,12 +26,16 @@ class TestClient(unittest.TestCase):
         self.assertEqual(10, client._Client__client_number)
         self.assertEqual("Raman", client._Client__first_name)
         self.assertEqual("Kaur", client._Client__last_name)
-        self.assertEqual("raman@pixell-river.com", client._Client__email_address)
+        self.assertEqual("raman@pixell-river.com",
+                         client._Client__email_address)
         
     def test_init_invalid_client_number_raises_ValueError(self):
         # Arrange , Act and Assert
         with self.assertRaises(ValueError):
-          client = Client("10", "Raman", "Kaur", "raman@pixell-river.com")  
+          client = Client("10", 
+                          "Raman",
+                          "Kaur",
+                          "raman@pixell-river.com")  
           
     
     def test_init_blank_first_name_raises_ValueError(self):
@@ -68,7 +75,8 @@ class TestClient(unittest.TestCase):
         
     def test_email_address_accessor_valid_email_returned(self):
         # Arrange , Act and Assert
-        self.assertEqual("raman@pixell-river.com", self.client.email_address)        
+        self.assertEqual("raman@pixell-river.com",
+                         self.client.email_address)        
         
         
     def test_str_valid_inputs_returns_formatted_string(self):
