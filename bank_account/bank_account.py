@@ -121,7 +121,7 @@ class BankAccount:
         if not isinstance(amount, (float,int)):
             raise ValueError(f"Deposit amount: {amount}"
                             +f" must be numeric.")
-        elif  amount < 0:
+        elif amount < 0:
             raise ValueError(f"Deposit amount: ${amount:,.2f} "
                             +f"must be positive.")
         else:
