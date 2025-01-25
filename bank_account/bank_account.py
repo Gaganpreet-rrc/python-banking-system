@@ -122,7 +122,7 @@ class BankAccount:
             raise ValueError(f"Deposit amount: {amount}"
                             +f" must be numeric.")
         elif amount < 0:
-            raise ValueError(f"Deposit amount: ${amount:,.2f} "
+            raise ValueError(f"Deposit amount: ${round(amount, 2)} "
                             +f"must be positive.")
         else:
             self.update_balance(amount)
@@ -151,12 +151,12 @@ class BankAccount:
             raise ValueError(f"Withdraw amount: {amount}"
                             +f" must be numeric.")    
         elif  amount < 0:
-            raise ValueError(f"Withdraw amount: ${amount:,.2f} "
+            raise ValueError(f"Withdraw amount: ${round(amount, 2)} "
                             +f"must be positive.")
         elif amount > self.__balance:
-            raise ValueError(f"Withdrawal amount: ${amount:,.2f}"
-                        +f"must not exceed the account balance: "
-                        +f"${self.__balance:,.2f}")
+            raise ValueError(f"Withdrawal amount: ${round(amount, 2)}"
+                        +f" must not exceed the account balance: "
+                        +f"${round(self.__balance, 2)}")
         else:
             self.update_balance(-amount)
             
@@ -168,6 +168,6 @@ class BankAccount:
             str: The BankAccount instance as a formatted string.
         """
         return (f"Account Number: {self.__account_number}"
-                +f" Balance: ${self.__balance:,.2f}")
+                +f" Balance: ${round(self.__balance, 2)}")
             
         
