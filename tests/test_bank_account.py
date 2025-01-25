@@ -178,7 +178,9 @@ class TestBankAccount(unittest.TestCase):
         # Arrange
         initial_balance = 900.2
         amount = 5000
-        expected = f"Withdrawal amount: ${round(amount, 2)} must not exceed the account balance: ${round(initial_balance, 2)}"
+        expected = (f"Withdrawal amount: ${round(amount, 2)} must "
+                  +f"not exceed the account balance: "
+                  +f"${round(initial_balance, 2)}")
                         
         bank_account = BankAccount(12345678, 25, initial_balance)
         
