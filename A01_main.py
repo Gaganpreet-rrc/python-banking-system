@@ -20,7 +20,10 @@ def main():
     # 1. Code a statement which creates a valid instance of the Client class.
     # Use your own unique valid values for the inputs to the class.
     try:
-        client = Client(20,"Gaganpreet", "Kaur","gaganpreetkaur434@gmail.com")
+        client = Client(20,
+                        "Gaganpreet",
+                        "Kaur",
+                        "gaganpreetkaur434@gmail.com")
     except ValueError as e:
         print(e)
 
@@ -47,7 +50,9 @@ def main():
     # BankAccount's client_number. 
     # Use an INVALID value (non-float) for the balance. 
     try:
-        client_bank_account = BankAccount(1234, client.client_number, "200.1")
+        client_bank_account = BankAccount(1234,
+                                          client.client_number,
+                                          "200.1")
     except ValueError as e:
         print(e)
 
