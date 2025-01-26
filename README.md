@@ -9,3 +9,4 @@ Assignment - 01: This is module 1 Assignment which is based on classes, encapsul
 
 ## Encapsulation
 [use this section to explain how Encapsulation was achieved in the BankAccount class.]
+Encapsulation in the BankAccount class is achieved by private attributes such as __account_number, __balance to protect the sensitive data from direct access. Controlled access is provided by public methods such as deposit() or withdraw(). This approach keeps the data secure, ensures all changes are checked and provide simple methods to use the class.
