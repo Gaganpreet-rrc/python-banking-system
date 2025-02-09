@@ -4,16 +4,22 @@ Description: A class that represents bank account.
 __author__ = "Gaganpreet Kaur"
 __version__ = "1.0.0"
 
+#  IMPORT STATEMENTS
+from datetime import date
+from abc import ABC, abstractmethod
 
-class BankAccount:
+class BankAccount(ABC):
     """
     BankAccount class. Represents bank account information of clients.
     """
     
+    BASE_SERVICE_CHARGER: float = 0.50 # Constant variable
+    
     def __init__(self, 
                  account_number: int,
                  client_number: int,
-                 balance: float):
+                 balance: float,
+                 date_created: date):
         """
         Initializes a client object based on the 
         received arguments (if valid).
@@ -25,6 +31,9 @@ class BankAccount:
             client number representing the account holder.
             balance (float):A float value representing the 
             current balance of the bank account.
+            date_created (date): The date when the bank account
+            was created.
+            
             
         Raises:
             ValueError: if any of the arguments are invalid.
@@ -36,6 +45,11 @@ class BankAccount:
              then the attribute should assigned to the given argument.
              If the argument cannot converted to float then the 
              attribute representing the balance should be set to 0.
+             
+            - If the argument of date_created is date type then the 
+             the attribute should assigned to the given argument.
+             If the argument is not of date type then the attribute 
+             should assigned to the current date.
         """
         if isinstance(account_number, int):
             self.__account_number = account_number
@@ -51,6 +65,11 @@ class BankAccount:
             self.__balance = balance
         else:
             self.__balance = 0
+            
+        if isinstance(date_created, date):
+            self._date_created = date_created
+        else:
+            self._date_created = date.today()
         
     @property
     def account_number (self) -> int:
@@ -170,5 +189,14 @@ class BankAccount:
         """
         return (f"Account Number: {self.__account_number}"
                 +f" Balance: ${self.__balance:,.2f}\n")
+        
+    @abstractmethod
+    def get_service_charges() -> float:
+        """
+        Calculate service charges based on the type of BankAccount.
+        Implemented in subclass(es).
+        
+        """
+        pass
             
         
