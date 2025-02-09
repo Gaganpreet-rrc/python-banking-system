@@ -13,7 +13,7 @@ class BankAccount(ABC):
     BankAccount class. Represents bank account information of clients.
     """
     
-    BASE_SERVICE_CHARGER: float = 0.50 # Constant variable
+    BASE_SERVICE_CHARGE: float = 0.50 # Constant variable
     
     def __init__(self, 
                  account_number: int,
@@ -191,7 +191,7 @@ class BankAccount(ABC):
                 +f" Balance: ${self.__balance:,.2f}\n")
         
     @abstractmethod
-    def get_service_charges() -> float:
+    def get_service_charges(self) -> float:
         """
         Calculate service charges based on the type of BankAccount.
         Implemented in subclass(es).
