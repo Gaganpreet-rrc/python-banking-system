@@ -166,8 +166,9 @@ class BankAccount:
         
         Returns: 
             str: The BankAccount instance as a formatted string.
+            
         """
         return (f"Account Number: {self.__account_number}"
-                +f" Balance: ${round(self.__balance, 2)}")
+                +f" Balance: ${self.__balance:,.2f}\n")
             
         
