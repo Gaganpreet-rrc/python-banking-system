@@ -196,6 +196,9 @@ class BankAccount(ABC):
         Calculate service charges based on the type of BankAccount.
         Implemented in subclass(es).
         
+        Returns:
+            float: The calculated service charge.
+        
         """
         pass
             
