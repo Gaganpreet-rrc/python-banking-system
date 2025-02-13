@@ -70,7 +70,6 @@ class ChequingAccount(BankAccount):
              attribute representing the overdraft_rate 
              should be set to 0.05.
              
-             
         """
         super().__init__(account_number, client_number,
                          balance, date_created) 
@@ -118,11 +117,13 @@ class ChequingAccount(BankAccount):
         """
         if self.__balance >= self.__overdraft_limit:
             calculated_service = self.BASE_SERVICE_CHARGE
+            
         else:
             calculated_service = (self.BASE_SERVICE_CHARGE +
             (self.__overdraft_limit - self.__balance) *  
             self.__overdraft_rate)
             
         return calculated_service
+    
     
     
