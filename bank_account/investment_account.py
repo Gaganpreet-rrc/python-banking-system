@@ -102,9 +102,9 @@ class InvestmentAccount(BankAccount):
             
         Notes:
             If the account was created more than 10 years ago, only the 
-            base service charge is applied. If the account was created 10 years 
-            ago or less, the service charge includes both the base service charge 
-            and the management fee.
+            base service charge is applied. If the account was created
+            10 years ago or less, the service charge includes both the
+            base service charge and the management fee.
             
         """
         if self._date_created > self.TEN_YEARS_AGO:
