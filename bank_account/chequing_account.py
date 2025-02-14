@@ -94,9 +94,9 @@ class ChequingAccount(BankAccount):
             
         """
         return_value = super().__str__()
-        return_value += f"Overdraft Limit: "
+        return_value += (f"Overdraft Limit: "
         +f"${self.__overdraft_limit:.2f} Overdraft Rate: "
-        +f"{self.__overdraft_rate:.2f}% Account Type: Chequing"
+        +f"{self.__overdraft_rate:.2f}% Account Type: Chequing")
         
         return (return_value)
     
@@ -115,12 +115,12 @@ class ChequingAccount(BankAccount):
             rate and the exceeded amount.
         
         """
-        if self.__balance >= self.__overdraft_limit:
+        if self.balance >= self.__overdraft_limit:
             calculated_service = self.BASE_SERVICE_CHARGE
             
         else:
             calculated_service = (self.BASE_SERVICE_CHARGE +
-            (self.__overdraft_limit - self.__balance) *  
+            (self.__overdraft_limit - self.balance) *  
             self.__overdraft_rate)
             
         return calculated_service

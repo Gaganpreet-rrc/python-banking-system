@@ -12,7 +12,7 @@ __credits__ = ""
 
 # 2. Create an instance of a ChequingAccount with values of your 
 # choice including a balance which is below the overdraft limit.
-
+#te
 
 # 3. Print the ChequingAccount created in step 2.
 # 3b. Print the service charges amount if calculated based on the 
@@ -24,12 +24,12 @@ __credits__ = ""
 # 4b. Print the ChequingAccount
 # 4c. Print the service charges amount if calculated based on the 
 # current state of the ChequingAccount created in step 2.
-
+#te
 
 print("===================================================")
 # 5. Create an instance of a SavingsAccount with values of your 
 # choice including a balance which is above the minimum balance.
-
+#te
 
 # 6. Print the SavingsAccount created in step 5.
 # 6b. Print the service charges amount if calculated based on the 
@@ -42,13 +42,13 @@ print("===================================================")
 # 7b. Print the SavingsAccount.
 # 7c. Print the service charges amount if calculated based on the 
 # current state of the SavingsAccount created in step 5.
-
+#te
 
 
 print("===================================================")
 # 8. Create an instance of an InvestmentAccount with values of your 
 # choice including a date created within the last 10 years.
-
+#te
 
 # 9a. Print the InvestmentAccount created in step 8.
 # 9b. Print the service charges amount if calculated based on the 
@@ -57,7 +57,7 @@ print("===================================================")
 
 # 10. Create an instance of an InvestmentAccount with values of your 
 # choice including a date created prior to 10 years ago.
-
+#te
 
 # 11a. Print the InvestmentAccount created in step 10.
 # 11b. Print the service charges amount if calculated based on the 
@@ -70,7 +70,7 @@ print("===================================================")
 # by using the withdraw method of the superclass and withdrawing 
 # the service charges determined by each instance invoking the 
 # polymorphic get_service_charges method.
-
+#te
 
 
 # 13. Print each of the bank account objects created in steps 2, 5, 8 and 10.
