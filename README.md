@@ -13,3 +13,7 @@ Assignment - 02: This is module 2 Assignment which is based on Abstraction, Inhe
 ## Encapsulation
 [use this section to explain how Encapsulation was achieved in the BankAccount class.]
 Encapsulation in the BankAccount class is achieved by private attributes such as __account_number, __balance to protect the sensitive data from direct access. Controlled access is provided by public methods such as deposit() or withdraw(). This approach keeps the data secure, ensures all changes are checked and provide simple methods to use the class.
+
+## Polymorphism
+[use this section to explain how Polymorphism was achieved in the BankAccount subclasses.]
+Polymorphism in the BankAccount subclasses is achieved by overriding method such as get_service_charges() in each subclass. While the method names and parameters stay the same across all account types, each subclass provides its own implementation to its specific account type. This allows different account types to behave differently when the same method is called, making the program more flexible and dynamic.
