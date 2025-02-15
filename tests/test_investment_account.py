@@ -57,10 +57,10 @@ class TestChequingAccount(unittest.TestCase):
     def test_get_service_charges_when_date_created_more_than_ten_years_ago_returned(self):
         # Arrange & Act
         investment_account = InvestmentAccount(12345678,
-                                                25,
-                                                900.2,
-                                                self.old_date,
-                                                1.99)
+                                               25,
+                                               900.2,
+                                               self.old_date,
+                                               1.99)
         calculated_service = investment_account.get_service_charges()
         
         # Assert
@@ -69,11 +69,10 @@ class TestChequingAccount(unittest.TestCase):
     def test_get_service_charges_when_date_created_exactly_ten_years_ago_returned(self):
         # Arrange & Act
         investment_account = InvestmentAccount(12345678,
-                                                25,
-                                                900.2,
-                                                self.exactly_ten,
-                                                1.99)
-        print(self.exactly_ten)
+                                               25,
+                                               900.2,
+                                               self.exactly_ten,
+                                               1.99)
         calculated_service = investment_account.get_service_charges()
         
         # Assert
@@ -82,10 +81,10 @@ class TestChequingAccount(unittest.TestCase):
     def test_get_service_charges_when_date_created_within_ten_years_ago_returned(self):
         # Arrange & Act
         investment_account = InvestmentAccount(12345678,
-                                                    25,
-                                                    900.2,
-                                                    self.new_date,
-                                                    1.99)
+                                               25,
+                                               900.2,
+                                               self.new_date,
+                                               1.99)
         calculated_service = investment_account.get_service_charges()
         
         # Assert
