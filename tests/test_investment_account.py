@@ -24,7 +24,6 @@ class TestInvestmentAccount(unittest.TestCase):
         self.old_date = date.today() - timedelta(days = 11 * 365.25)
         self.exactly_ten = date.today() - timedelta(days = 10 * 365.25)
         self.new_date = date.today() - timedelta(days = 9 * 365.25)
-        
             
     def test_init_valid_arguments_attributes_set(self):
         # verify superclass private attributes
@@ -98,7 +97,7 @@ class TestInvestmentAccount(unittest.TestCase):
                                                self.old_date,
                                                1.99)
         expected = ("Account Number: 12345678 Balance: $900.20\n"
-                    +f"Date Created: 2014-02-15 Management Fee: "
+                    +f"Date Created: {self.old_date} Management Fee: "
                     +f"Waived Account Type: Investment")
         # Assert
         self.assertEqual(expected, str(investment_account))
@@ -111,7 +110,7 @@ class TestInvestmentAccount(unittest.TestCase):
                                                self.new_date,
                                                1.99)
         expected = ("Account Number: 12345678 Balance: $900.20\n"
-                    +f"Date Created: 2016-02-15 Management Fee: "
+                    +f"Date Created: {self.new_date} Management Fee: "
                     +f"$1.99 Account Type: Investment")
         # Assert
         self.assertEqual(expected, str(investment_account))
