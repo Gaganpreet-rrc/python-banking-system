@@ -1,5 +1,5 @@
 """
-Description: Unit tests for the ChequingAccount class.
+Description: Unit tests for the InvestmentAccount class.
 Author: Gaganpreet Kaur
 Date: 2025-02-14
 Usage: To execute all tests in the terminal execute 
@@ -14,7 +14,7 @@ from datetime import date, timedelta
 from bank_account.investment_account import InvestmentAccount
 
 
-class TestChequingAccount(unittest.TestCase):
+class TestInvestmentAccount(unittest.TestCase):
     def setUp(self):
         self.investment_account = InvestmentAccount(12345678,
                                                     25,
