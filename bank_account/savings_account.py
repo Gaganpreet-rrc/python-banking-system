@@ -79,8 +79,10 @@ class SavingsAccount(BankAccount):
         """
         return_value = super().__str__()
         return_value += (f"Minimum Balance: "
-                         +f"{self.__minimum_balance:,.2f} "
+                         +f"${self.__minimum_balance:,.2f} "
                          +f"Account Type: Savings")
+        
+        return (return_value)
         
     def get_service_charges(self) -> float:
         """
@@ -96,7 +98,7 @@ class SavingsAccount(BankAccount):
             service charge is calculated through a given formula.
             
         """
-        if self.__balance >= self.__minimum_balance:
+        if self.balance >= self.__minimum_balance:
             calculated_service_charge = self.BASE_SERVICE_CHARGE
         else:
             calculated_service_charge = (self.BASE_SERVICE_CHARGE *
