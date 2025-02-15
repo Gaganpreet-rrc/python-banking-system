@@ -82,10 +82,10 @@ class InvestmentAccount(BankAccount):
             
         """
         return_value = super().__str__()
-        if self._date_created <= self.TEN_YEARS_AGO:
+        if self._date_created >= self.TEN_YEARS_AGO:
             fee = f"${self.__management_fee:.2f}"
         else:
-            fee = "waived"
+            fee = "Waived"
             
         return_value += (f"Date Created: {self._date_created} "
                          +f"Management Fee: {fee} Account Type: "
@@ -107,12 +107,13 @@ class InvestmentAccount(BankAccount):
             base service charge and the management fee.
             
         """
-        if self._date_created > self.TEN_YEARS_AGO:
+        if self._date_created < self.TEN_YEARS_AGO:
             calculated_service_charge = self.BASE_SERVICE_CHARGE
             
         else:
             calculated_service_charge = (self.BASE_SERVICE_CHARGE +
                                   self.__management_fee)
+
             
         return calculated_service_charge
     
