@@ -26,11 +26,11 @@ class TestChequingAccount(unittest.TestCase):
     def test_init_valid_arguments_attributes_set(self):
         # verify superclass private attributes
         self.assertEqual(12345678,
-                         self.chequing_account._BankAccount__account_number)
+                    self.chequing_account._BankAccount__account_number)
         self.assertEqual(25,
-                         self.chequing_account._BankAccount__client_number)
+                    self.chequing_account._BankAccount__client_number)
         self.assertEqual(900.2,
-                         self.chequing_account._BankAccount__balance)
+                    self.chequing_account._BankAccount__balance)
         
         # verify superclass protected attributes
         self.assertEqual(date(2024,2,10), 

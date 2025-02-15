@@ -111,7 +111,8 @@ class TestBankAccount(unittest.TestCase):
         # Arrange
         initial_balance = 900.2
         amount = -20
-        expected = f"Deposit amount: ${round(amount, 2)} must be positive." 
+        expected = (f"Deposit amount: ${round(amount, 2)} "
+                   +f"must be positive.")
         bank_account = BankAccount(12345678, 25, initial_balance)
         
         # Act and Assert
@@ -150,7 +151,8 @@ class TestBankAccount(unittest.TestCase):
         # Arrange
         initial_balance = 900.2
         amount = -15
-        expected = f"Withdraw amount: ${round(amount, 2)} must be positive."
+        expected = (f"Withdraw amount: ${round(amount, 2)} "
+                   +f"must be positive.")
         bank_account = BankAccount(12345678, 25, initial_balance)
         
         # Act and Assert
