@@ -3,6 +3,7 @@ __version__ = "1.0.0"
 
 from patterns.strategy.service_charge_strategy import ServiceChargeStrategy
 from datetime import date, timedelta
+from bank_account.bank_account import BankAccount
 
 class ManagementFeeStrategy(ServiceChargeStrategy):
     """
@@ -24,7 +25,7 @@ class ManagementFeeStrategy(ServiceChargeStrategy):
         self.__management_fee = management_fee
         
         
-    def get_service_charges(self) -> float:
+    def calculate_service_charges(self, account: BankAccount) -> float:
         """
         Calculates the service charge for the account.
         
@@ -38,7 +39,7 @@ class ManagementFeeStrategy(ServiceChargeStrategy):
             base service charge and the management fee.
         """
         
-        if self._date_created < self.TEN_YEARS_AGO:
+        if self.__date_created < self.TEN_YEARS_AGO:
             calculated_service_charge = self.BASE_SERVICE_CHARGE
             
         else:
