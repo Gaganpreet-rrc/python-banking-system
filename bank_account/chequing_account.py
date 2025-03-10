@@ -8,7 +8,6 @@ __version__ = "1.0.0"
 from datetime import date
 from bank_account.bank_account import BankAccount
 from patterns.strategy.overdraft_strategy import OverdraftStrategy
-from patterns.strategy.overdraft_strategy import OverdraftStrategy
 
 class ChequingAccount(BankAccount):
     """
@@ -108,19 +107,13 @@ class ChequingAccount(BankAccount):
     
     def get_service_charges(self) -> float:
         """
-        Calculate the service charges based on the account's balance
-        and overdraft limit.
+        Retrieves the service charges for the current account based on the strategy
+        for calculating the service charges.
 
         Returns:
-            float: The calculated service charge.
-            
-        Notes:
-            If the balance is greater than or equal to the overdraft limit, 
-            the base service charge is applied. Otherwise, an 
-            additional charge is added based on the overdraft
-            rate and the exceeded amount.
-        
+            The service charge calculated based on the current strategy.
         """
+        
         return self.__strategy.calculate_service_charges(self)
     
     
