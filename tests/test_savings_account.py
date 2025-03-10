@@ -8,7 +8,6 @@ the appropriate file name.):
     python -m unittest tests/test_file_name.py
 """
 
-#  IMPORT STATEMENTS
 import unittest
 from datetime import date
 from bank_account.savings_account import SavingsAccount
