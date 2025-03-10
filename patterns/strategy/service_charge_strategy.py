@@ -6,7 +6,8 @@ from bank_account.bank_account import BankAccount
 
 class ServiceChargeStrategy(ABC):
     """
-    
+    ServiceChargeStrategy: This is an abstract class that defines 
+    a strategy for calculating service charges. 
 
     """
     service_charge = BankAccount.BASE_SERVICE_CHARGE
@@ -14,6 +15,7 @@ class ServiceChargeStrategy(ABC):
     @abstractmethod
     def calculate_service_charges(account: BankAccount)-> float:
         """
-        
+        Abstract method to calculate the service charge based on balance.
         """
+        
         pass
