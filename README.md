@@ -4,10 +4,12 @@ This project will be developed over the course of several assignments.  Each ass
 ## Author
 Gaganpreet Kaur
 
-## Assignment
+## Assignments:
 Assignment - 01: This is module 1 Assignment which is based on classes, encapsulation and unit test planning.
 
 Assignment - 02: This is module 2 Assignment which is based on Abstraction, Inheritance and Polymorphism.
+
+Assignment - 03: This is module 3 Assignment which is based on design patterns such as observer pattern, startegy pattern and exploring their implementation and use cases.
 
 
 ## Encapsulation
@@ -17,3 +19,7 @@ Encapsulation in the BankAccount class is achieved by private attributes such as
 ## Polymorphism
 [use this section to explain how Polymorphism was achieved in the BankAccount subclasses.]
 Polymorphism in the BankAccount subclasses is achieved by overriding method such as get_service_charges() in each subclass. While the method names and parameters stay the same across all account types, each subclass provides its own implementation to its specific account type. This allows different account types to behave differently when the same method is called, making the program more flexible and dynamic.
+
+## Strategy Pattern
+[use this section to explain how the Strategy Pattern is being used in this application.]
+The Strategy Pattern is used in this application to calculate service charges dynamically based on distinct conditions. Instead of having a fixed calculation method in the BankAccount class, various strategies like MinimumBalanceStrategy, OverdraftStrategy, and ManagementFeeStrategy implement their own logic for determining service charges. This allows flexibility, making it easy to switch or add new charge calculation methods without modifying the core account functionality.

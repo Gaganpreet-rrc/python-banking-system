@@ -8,6 +8,7 @@ __version__ = "1.0.0"
 from datetime import date, timedelta
 
 from bank_account.bank_account import BankAccount
+from patterns.strategy.management_fee_strategy import ManagementFeeStrategy
 
 class InvestmentAccount(BankAccount):
     """
@@ -16,7 +17,7 @@ class InvestmentAccount(BankAccount):
     in the investment Account.
     """
         
-    TEN_YEARS_AGO = date.today() - timedelta(days = 10 * 365.25) # Constant variable
+    TEN_YEARS_AGO = date.today() - timedelta(days = 10 * 365.25)
     
     def __init__(self,
                  account_number: int,
@@ -73,6 +74,9 @@ class InvestmentAccount(BankAccount):
         else:
             self.__management_fee = 2.55
             
+        self.__strategy = ManagementFeeStrategy(self._date_created,
+                                                self.__management_fee)
+            
     def __str__(self) -> str:
         """
         Returns a string representation of a InvestmentAccount object.
@@ -95,24 +99,15 @@ class InvestmentAccount(BankAccount):
     
     def get_service_charges(self) -> float:
         """
-        Calculates the service charge for the investment account.
-        
-        Returns:
-            float: The calculated service charge.
-            
-        Notes:
-            If the account was created more than 10 years ago, only the 
-            base service charge is applied. If the account was created
-            10 years ago or less, the service charge includes both the
-            base service charge and the management fee.
-            
-        """
-        if self._date_created < self.TEN_YEARS_AGO:
-            calculated_service_charge = self.BASE_SERVICE_CHARGE
-            
-        else:
-            calculated_service_charge = (self.BASE_SERVICE_CHARGE +
-                                  self.__management_fee)
+        Retrieves and calculates the service charge for the 
+        account based on the assigned service charge strategy.
 
-        return calculated_service_charge
-    
+        This method calls the `calculate_service_charges` function
+        from the currently assigned strategy, passing the account
+        instance to determine the applicable service charge.
+
+        Returns:
+            A float representing the calculated service charge.
+        """
+        return self.__strategy.calculate_service_charges(self)
+

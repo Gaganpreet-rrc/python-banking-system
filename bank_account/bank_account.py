@@ -13,9 +13,7 @@ class BankAccount(ABC):
     BankAccount class. Represents bank account information of clients.
     """
     
-    BASE_SERVICE_CHARGE: float = 0.50 # Constant variable
-    
-    def __init__(self, 
+    def __init__(self,
                  account_number: int,
                  client_number: int,
                  balance: float,
@@ -51,6 +49,7 @@ class BankAccount(ABC):
              If the argument is not of date type then the attribute 
              should assigned to the current date.
         """
+        
         if isinstance(account_number, int):
             self.__account_number = account_number
         else:
