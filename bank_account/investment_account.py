@@ -99,12 +99,12 @@ class InvestmentAccount(BankAccount):
     
     def get_service_charges(self) -> float:
         """
-        Retrieves and calculates the service charge for the account based on 
-        the assigned service charge strategy.
+        Retrieves and calculates the service charge for the 
+        account based on the assigned service charge strategy.
 
-        This method calls the `calculate_service_charges` function from the
-        currently assigned strategy, passing the account instance to determine
-        the applicable service charge.
+        This method calls the `calculate_service_charges` function
+        from the currently assigned strategy, passing the account
+        instance to determine the applicable service charge.
 
         Returns:
             A float representing the calculated service charge.

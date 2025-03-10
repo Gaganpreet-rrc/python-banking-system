@@ -16,7 +16,8 @@ class ServiceChargeStrategy(ABC):
     @abstractmethod
     def calculate_service_charges(self, account: BankAccount)-> float:
         """
-        Abstract method to calculate the service charge based on balance.
+        Abstract method to calculate the service charge based
+        on balance.
         
         Args:
             account (BankAccount): It receives service charge based
