@@ -6,7 +6,7 @@ from bank_account.bank_account import BankAccount
 
 class MinimumBalanceStrategy(ServiceChargeStrategy):
     """
-    MinimumBalanceStrategy: This strategy applies a service charge 
+    MinimumBalanceStrategy: This strategy applies a service charge
     based on whether the balance of the account meets or exceeds
     the minimum balance threshold.
     If the balance is below the minimum, a premium service charge
