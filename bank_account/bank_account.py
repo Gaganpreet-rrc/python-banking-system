@@ -49,6 +49,7 @@ class BankAccount(ABC):
              If the argument is not of date type then the attribute 
              should assigned to the current date.
         """
+        
         if isinstance(account_number, int):
             self.__account_number = account_number
         else:

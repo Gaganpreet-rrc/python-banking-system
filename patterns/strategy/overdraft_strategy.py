@@ -31,6 +31,10 @@ class OverdraftStrategy(ServiceChargeStrategy):
         """
         Calculate the service charges based on the account's balance
         and overdraft limit.
+        
+        Args:
+            account (BankAccount): It receives service charge based
+            on BankAccount instance. 
 
         Returns:
             float: The calculated service charge.

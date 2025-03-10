@@ -28,6 +28,10 @@ class MinimumBalanceStrategy(ServiceChargeStrategy):
         """
         Calculates the service charge for the account.
         
+        Args:
+            account (BankAccount): It receives service charge based
+            on BankAccount instance. 
+        
         Returns:
             float: The calculated service charge.
             
@@ -45,6 +49,4 @@ class MinimumBalanceStrategy(ServiceChargeStrategy):
                                         self.SERVICE_CHARGE_PREMIUM)
             
         return calculated_service_charge
-        
-        
         
