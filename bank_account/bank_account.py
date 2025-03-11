@@ -4,14 +4,18 @@ Description: A class that represents bank account.
 __author__ = "Gaganpreet Kaur"
 __version__ = "1.0.0"
 
-#  IMPORT STATEMENTS
 from datetime import date
 from abc import ABC, abstractmethod
+from patterns.observer.observer import Observer
+from patterns.observer.subject import Subject
 
-class BankAccount(ABC):
+
+class BankAccount(Subject, ABC):
     """
     BankAccount class. Represents bank account information of clients.
     """
+    LARGE_TRANSACTION_THRESHOLD: float = 9999.99
+    LOW_BALANCE_LEVEL: float = 50.0
     
     def __init__(self,
                  account_number: int,
@@ -49,6 +53,8 @@ class BankAccount(ABC):
              If the argument is not of date type then the attribute 
              should assigned to the current date.
         """
+        super().__init__()
+        self._subject = Subject()
         
         if isinstance(account_number, int):
             self.__account_number = account_number
@@ -104,7 +110,7 @@ class BankAccount(ABC):
         return self.__balance
     
     def update_balance (self, amount: float):
-        """   
+        """
         Updates the balance by adding the specified amount
         to the current balance (can be postive or negative).
         Ensures the amount is either an integer or a float.
@@ -200,5 +206,33 @@ class BankAccount(ABC):
         
         """
         pass
+    
+    def attach(self, observer: Observer):
+        """
+        Adds an observer to the subject's list of observers.
+
+        Args:
+            observer (Observer): The observer instance to be added.
+        """
+        self._subject.attach(observer)
+       
+        
+    def detach(self, observer: Observer):
+        """
+        Removes an observer from the subject's list of observers.
+
+        Args:
+            observer (Observer): The observer instance to be removed.
+        """
+        self._subject.detach(observer)
+    
+    def notify(self, message: str):
+        """
+        Notifies all registered observers of a state change.
+
+        Args:
+            message (str): The message to be sent to all observers.
+        """
+        self._subject.notify(message)
             
         
