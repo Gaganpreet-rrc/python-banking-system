@@ -74,7 +74,7 @@ class InvestmentAccount(BankAccount):
         else:
             self.__management_fee = 2.55
             
-        self.__strategy = ManagementFeeStrategy(self._date_created,
+        self.__strategy = ManagementFeeStrategy(self.__date_created,
                                                 self.__management_fee)
             
     def __str__(self) -> str:

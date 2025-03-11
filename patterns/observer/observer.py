@@ -21,3 +21,4 @@ class Observer(ABC):
             message (str): The update message sent by the subject.
         """
         pass
+    
