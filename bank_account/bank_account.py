@@ -111,18 +111,32 @@ class BankAccount(Subject, ABC):
     
     def update_balance (self, amount: float):
         """
-        Updates the balance by adding the specified amount
-        to the current balance (can be postive or negative).
-        Ensures the amount is either an integer or a float.
-        
+        Updates the balance by adding the given amount. 
+
         Args:
-            amount (float): The amount to add to the balance.
+            amount (float): The transaction amount.
+
+        Notifications:
+            - Sends a low balance warning if balance falls below LOW_BALANCE_LEVEL.
+            - Sends an alert for transactions exceeding LARGE_TRANSACTION_THRESHOLD.
         
         Returns:
             None: This method does not return anything.
         """
-        if isinstance(amount, (float,int)):
-            self.__balance += amount
+        if self.__balance < self.LOW_BALANCE_LEVEL:
+            
+            message = (f"Low balance warning {self.__balance:,.2f}: "
+            +f"on account {self.__account_number}.")
+            
+            self.notify(message)
+            
+        if amount > self.LARGE_TRANSACTION_THRESHOLD:
+            
+            message2 = (f"Large transaction {amount:,.2f}: "
+            +f"on account {self.__account_number}.")
+            
+            self.notify(message2)
+
             
     def deposit (self, amount: float):
         """

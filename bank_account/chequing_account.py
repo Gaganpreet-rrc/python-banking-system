@@ -10,6 +10,7 @@ from bank_account.bank_account import BankAccount
 from patterns.strategy.overdraft_strategy import OverdraftStrategy
 
 class ChequingAccount(BankAccount):
+    
     """
     ChequingAccount class. Represents Chequing account information
     of banking clients who has frequent transactions of both deposits
