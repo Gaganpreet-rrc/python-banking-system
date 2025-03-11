@@ -2,7 +2,7 @@ __author__ = "Gaganpreet Kaur"
 __version__ = "1.0.0"
 
 from abc import ABC, abstractmethod
-from observer.observer import Observer
+from patterns.observer.observer import Observer
 
 class Subject(ABC):
     """
@@ -13,7 +13,8 @@ class Subject(ABC):
     
     def __init__(self):
         """
-        Initializes the subject object with an empty list of observers.
+        Initializes the subject object with an empty
+        list of observers.
         """
         self._observers: list[Observer] = []
         

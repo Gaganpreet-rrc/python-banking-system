@@ -4,12 +4,10 @@ Description: A class that represents client information.
 __author__ = "Gaganpreet Kaur"
 __version__ = "1.0.0"
 
-# IMPORT STATEMENTS
 from email_validator import validate_email, EmailNotValidError
 from patterns.observer.observer import Observer
 from utility import file_utils
 from datetime import datetime
-
 
 
 class Client(Observer):

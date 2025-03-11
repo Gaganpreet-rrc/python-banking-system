@@ -108,11 +108,12 @@ class ChequingAccount(BankAccount):
     
     def get_service_charges(self) -> float:
         """
-        Retrieves the service charges for the current account based on the strategy
-        for calculating the service charges.
+        Retrieves the service charges for the current account
+        based on the strategy for calculating the service charges.
 
         Returns:
-            The service charge calculated based on the current strategy.
+            The service charge calculated based on the current
+            strategy.
         """
         
         return self.__strategy.calculate_service_charges(self)

@@ -4,20 +4,28 @@ of the Observer Pattern.
 """
 __author__ = "ACE Faculty"
 __version__ = "1.0.0"
-__credits__ = ""
+__credits__ = "Gaganpreet Kaur"
 
 # 1.  Import all BankAccount types using the bank_account package
 #     Import date
 #     Import Client
-
-
-
+from bank_account.bank_account import BankAccount
+from bank_account.chequing_account import ChequingAccount
+from bank_account.investment_account import InvestmentAccount
+from bank_account.savings_account import SavingsAccount
+from datetime import date
+from client.client import Client
 
 
 
 # 2. Create a Client object with data of your choice.
-
-
+try:
+    client = Client(12345,
+                    "Gaganpreet",
+                    "Kaur",
+                    "gaganpreetkaur22@gmail.com")
+except ValueError as e:
+    print(e)
 
 
 # 3a. Create a ChequingAccount object with data of your choice, using the client_number 
@@ -25,25 +33,54 @@ __credits__ = ""
 # 3b. Create a SavingsAccount object with data of your choice, using the client_number 
 # of the client created in step 2.
 
+try:
+    chequing_account = ChequingAccount(1234567,
+                                       client.client_number,
+                                       200.2,
+                                       date(2024,2,10),
+                                       50.5,
+                                       0.025)
+except ValueError as e:
+    print(e)
 
-
-
+try:
+    savings_account = SavingsAccount(8543267,
+                                     client.client_number,
+                                     900.2,
+                                     date(2024,2,10),
+                                     100.0)
+except ValueError as e:
+    print(e)
 
 # 4 The ChequingAccount and SavingsAccount objects are 'Subject' objects.
-# The Client object is an 'Observer' object.  
+# The Client object is an 'Observer' object.
 # 4a.  Attach the Client object (created in step 1) to the ChequingAccount object (created in step 2).
 # 4a.  Attach the Client object (created in step 1) to the SavingsAccount object (created in step 2).
 
-
+chequing_account.attach(client)
+savings_account.attach(client)
 
 
 
 # 5a. Create a second Client object with data of your choice.
 # 5b. Create a SavingsAccount object with data of your choice, using the client_number 
 # of the client created in this step.
+try:
+    client_2 = Client(234567,
+                      "Anand",
+                      "Kaur",
+                      "anandkaur44@gmail.com")
+except ValueError as e:
+    print(e)
 
-
-
+try:
+    savings_account_2 = SavingsAccount(6785435,
+                                     client_2.client_number,
+                                     400.6,
+                                     date(2024,10,10),
+                                     500.0)
+except ValueError as e:
+    print(e)
 
 # 6. Use the ChequingAccount and SavingsAccount objects created 
 # in steps 3 and 5 above to perform transactions (deposits and withdraws) 
@@ -55,3 +92,23 @@ __credits__ = ""
 # ensure the methods are invoked using proper exception handling such 
 # that any exception messages are printed to the console.
 
+try:
+    chequing_account.deposit(201.0)  
+    chequing_account.withdraw(50.0)  
+    chequing_account.withdraw(5000.0) 
+except ValueError as e:
+    print(e)
+    
+try:
+    savings_account.deposit(5.0) 
+    savings_account.withdraw(900.0) 
+    savings_account.withdraw(50.0) 
+except ValueError as e:
+    print(e)
+
+try:
+    savings_account_2.deposit(1000.0) 
+    savings_account_2.withdraw(50.0) 
+    savings_account_2.withdraw(10000.0) 
+except ValueError as e:
+    print(e)

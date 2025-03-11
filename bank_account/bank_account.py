@@ -54,7 +54,6 @@ class BankAccount(Subject, ABC):
              should assigned to the current date.
         """
         super().__init__()
-        self._subject = Subject()
         
         if isinstance(account_number, int):
             self.__account_number = account_number
@@ -117,12 +116,15 @@ class BankAccount(Subject, ABC):
             amount (float): The transaction amount.
 
         Notifications:
-            - Sends a low balance warning if balance falls below LOW_BALANCE_LEVEL.
-            - Sends an alert for transactions exceeding LARGE_TRANSACTION_THRESHOLD.
+            - Sends a low balance warning if balance
+              falls below LOW_BALANCE_LEVEL.
+            - Sends an alert for transactions exceeding
+              LARGE_TRANSACTION_THRESHOLD.
         
         Returns:
             None: This method does not return anything.
         """
+        self.__balance += amount
         if self.__balance < self.LOW_BALANCE_LEVEL:
             
             message = (f"Low balance warning {self.__balance:,.2f}: "
@@ -132,10 +134,10 @@ class BankAccount(Subject, ABC):
             
         if amount > self.LARGE_TRANSACTION_THRESHOLD:
             
-            message2 = (f"Large transaction {amount:,.2f}: "
+            message_2 = (f"Large transaction {amount:,.2f}: "
             +f"on account {self.__account_number}.")
             
-            self.notify(message2)
+            self.notify(message_2)
 
             
     def deposit (self, amount: float):
@@ -228,7 +230,7 @@ class BankAccount(Subject, ABC):
         Args:
             observer (Observer): The observer instance to be added.
         """
-        self._subject.attach(observer)
+        super().attach(observer)
        
         
     def detach(self, observer: Observer):
@@ -238,7 +240,8 @@ class BankAccount(Subject, ABC):
         Args:
             observer (Observer): The observer instance to be removed.
         """
-        self._subject.detach(observer)
+        super().detach(observer)
+        
     
     def notify(self, message: str):
         """
@@ -247,6 +250,7 @@ class BankAccount(Subject, ABC):
         Args:
             message (str): The message to be sent to all observers.
         """
-        self._subject.notify(message)
+        super().notify(Observer)
+        
             
         
