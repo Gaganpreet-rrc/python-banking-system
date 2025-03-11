@@ -15,7 +15,7 @@ class Subject(ABC):
         """
         Initializes the subject object with an empty list of observers.
         """
-        self._observers = []
+        self._observers: list[Observer] = []
         
     @abstractmethod
     def attach(self, observer: Observer):
