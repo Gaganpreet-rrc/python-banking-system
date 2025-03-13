@@ -7,8 +7,8 @@ from bank_account.bank_account import BankAccount
 
 class ManagementFeeStrategy(ServiceChargeStrategy):
     """
-    ManagementFeeStrategy: This strategy applies a fixed management fee 
-    based on the account balance.
+    ManagementFeeStrategy: This strategy applies a fixed management
+    fee based on the account balance.
     """
     
     TEN_YEARS_AGO = date.today() - timedelta(days = 10 * 365.25)
@@ -16,6 +16,7 @@ class ManagementFeeStrategy(ServiceChargeStrategy):
     def __init__(self, date_created: date, management_fee: float):
         """
         Initializes date_created and management_fee amount.  
+        
         Args:
             date_created: The date when the account was created.
             management_fee: The fixed management fee to be applied.

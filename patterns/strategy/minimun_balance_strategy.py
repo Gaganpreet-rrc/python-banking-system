@@ -20,7 +20,8 @@ class MinimumBalanceStrategy(ServiceChargeStrategy):
         Initializes the minimum balance for the strategy.
         
         Args:
-            minimum_balance (float): The minimum balance required to avoid a service charge.
+            minimum_balance (float): The minimum balance required
+            to avoid a service charge.
         """
         self.__minimum_balance = minimum_balance
         

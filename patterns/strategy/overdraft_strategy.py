@@ -40,8 +40,8 @@ class OverdraftStrategy(ServiceChargeStrategy):
             float: The calculated service charge.
             
         Notes:
-            If the balance is greater than or equal to the overdraft limit, 
-            the base service charge is applied. Otherwise, an 
+            If the balance is greater than or equal to the overdraft
+            limit, the base service charge is applied. Otherwise, an 
             additional charge is added based on the overdraft
             rate and the exceeded amount.
         """

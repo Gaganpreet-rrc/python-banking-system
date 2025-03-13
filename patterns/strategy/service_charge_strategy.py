@@ -7,7 +7,7 @@ from bank_account.bank_account import BankAccount
 
 class ServiceChargeStrategy(ABC):
     """
-    ServiceChargeStrategy: This is an abstract class that defines 
+    ServiceChargeStrategy: This is an abstract class that defines
     a strategy for calculating service charges. 
     
     """

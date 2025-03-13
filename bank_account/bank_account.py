@@ -127,14 +127,14 @@ class BankAccount(Subject, ABC):
         self.__balance += amount
         if self.__balance < self.LOW_BALANCE_LEVEL:
             
-            message = (f"Low balance warning {self.__balance:,.2f}: "
+            message = (f"Low balance warning ${self.__balance:,.2f}: "
             +f"on account {self.__account_number}.")
             
             self.notify(message)
             
-        if amount > self.LARGE_TRANSACTION_THRESHOLD:
+        if abs(amount) > self.LARGE_TRANSACTION_THRESHOLD:
             
-            message_2 = (f"Large transaction {amount:,.2f}: "
+            message_2 = (f"Large transaction ${amount:,.2f}: "
             +f"on account {self.__account_number}.")
             
             self.notify(message_2)
@@ -191,12 +191,12 @@ class BankAccount(Subject, ABC):
             raise ValueError(f"Withdraw amount: {amount}"
                             +f" must be numeric.")    
         elif  amount < 0:
-            raise ValueError(f"Withdraw amount: ${round(amount, 2)} "
+            raise ValueError(f"Withdraw amount: ${amount:,.2f} "
                             +f"must be positive.")
         elif amount > self.__balance:
-            raise ValueError(f"Withdrawal amount: ${round(amount, 2)}"
+            raise ValueError(f"Withdrawal amount: ${amount:,.2f}"
                         +f" must not exceed the account balance: "
-                        +f"${round(self.__balance, 2)}")
+                        +f"${self.__balance:,.2f}")
         else:
             self.update_balance(-amount)
             
@@ -219,7 +219,6 @@ class BankAccount(Subject, ABC):
         
         Returns:
             float: The calculated service charge.
-        
         """
         pass
     
@@ -230,7 +229,7 @@ class BankAccount(Subject, ABC):
         Args:
             observer (Observer): The observer instance to be added.
         """
-        super().attach(observer)
+        self._observers.append(observer)
        
         
     def detach(self, observer: Observer):
@@ -240,7 +239,7 @@ class BankAccount(Subject, ABC):
         Args:
             observer (Observer): The observer instance to be removed.
         """
-        super().detach(observer)
+        self._observers.remove(observer)
         
     
     def notify(self, message: str):
@@ -250,7 +249,6 @@ class BankAccount(Subject, ABC):
         Args:
             message (str): The message to be sent to all observers.
         """
-        super().notify(Observer)
-        
-            
+        for observer in self._observers:
+            observer.update(message)
         

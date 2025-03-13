@@ -64,7 +64,7 @@ class Client(Observer):
             
         try:
             validated_email = validate_email(email_address,
-                                             check_deliverability = False)
+                                        check_deliverability = False)
             self.__email_address = validated_email.normalized
             
         except EmailNotValidError:

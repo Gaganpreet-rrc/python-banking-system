@@ -16,7 +16,7 @@ class Subject(ABC):
         Initializes the subject object with an empty
         list of observers.
         """
-        self._observers: list[Observer] = []
+        self._observers = []
         
     @abstractmethod
     def attach(self, observer: Observer):
@@ -36,7 +36,7 @@ class Subject(ABC):
         Args:
             observer (Observer): The observer to be removed.
         """
-        self._observers.remove
+        pass
     
     @abstractmethod
     def notify(self, message: str):
@@ -47,5 +47,4 @@ class Subject(ABC):
             message (str): The update message.
         """
         pass
-        
         

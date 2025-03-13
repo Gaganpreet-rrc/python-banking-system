@@ -61,7 +61,6 @@ chequing_account.attach(client)
 savings_account.attach(client)
 
 
-
 # 5a. Create a second Client object with data of your choice.
 # 5b. Create a SavingsAccount object with data of your choice, using the client_number 
 # of the client created in this step.
@@ -75,12 +74,13 @@ except ValueError as e:
 
 try:
     savings_account_2 = SavingsAccount(6785435,
-                                     client_2.client_number,
-                                     400.6,
-                                     date(2024,10,10),
-                                     500.0)
+                                      client_2.client_number,
+                                      700.6,
+                                      date(2024,10,10),
+                                      50.0)
 except ValueError as e:
     print(e)
+    
 
 # 6. Use the ChequingAccount and SavingsAccount objects created 
 # in steps 3 and 5 above to perform transactions (deposits and withdraws) 
@@ -93,22 +93,47 @@ except ValueError as e:
 # that any exception messages are printed to the console.
 
 try:
-    chequing_account.deposit(201.0)  
-    chequing_account.withdraw(50.0)  
-    chequing_account.withdraw(5000.0) 
+    chequing_account.withdraw(160.0)  
 except ValueError as e:
     print(e)
     
 try:
-    savings_account.deposit(5.0) 
-    savings_account.withdraw(900.0) 
-    savings_account.withdraw(50.0) 
+    chequing_account.deposit(10000.0)  
+except ValueError as e:
+    print(e)
+    
+try:
+    chequing_account.withdraw(10000.0) 
+except ValueError as e:
+    print(e)
+    
+try:
+    savings_account.withdraw(860.2) 
+except ValueError as e:
+    print(e)
+    
+try:
+    savings_account.deposit(50000.0) 
+except ValueError as e:
+    print(e)
+    
+try:
+    savings_account.withdraw(440000.2)
+except ValueError as e:
+    print(e)
+        
+try:
+    savings_account_2.withdraw(700.0) 
 except ValueError as e:
     print(e)
 
 try:
-    savings_account_2.deposit(1000.0) 
-    savings_account_2.withdraw(50.0) 
-    savings_account_2.withdraw(10000.0) 
+    savings_account_2.deposit(45000.0)
 except ValueError as e:
     print(e)
+    
+try:
+    savings_account_2.withdraw(55000.0) 
+except ValueError as e:
+    print(e)
+    
