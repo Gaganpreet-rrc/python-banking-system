@@ -23,3 +23,7 @@ Polymorphism in the BankAccount subclasses is achieved by overriding method such
 ## Strategy Pattern
 [use this section to explain how the Strategy Pattern is being used in this application.]
 The Strategy Pattern is used in this application to calculate service charges dynamically based on distinct conditions. Instead of having a fixed calculation method in the BankAccount class, various strategies like MinimumBalanceStrategy, OverdraftStrategy, and ManagementFeeStrategy implement their own logic for determining service charges. This allows flexibility, making it easy to switch or add new charge calculation methods without modifying the core account functionality.
+
+## Observer Pattern
+[use this section to explain how the Observer Pattern is being used in this application.]
+The Observer Pattern is used in this assignment by having BankAccount which is acting as a subject that notifies MinimumBalanceStrategy, ManagementFeeStrategy and OverdraftStrategy whenever account details change. This allows the strategy to automatically recalculate service charges, ensuring updates are applied dynamically. This approach improves maintainability and keeps the service charge logic adaptable to changes in account status.
