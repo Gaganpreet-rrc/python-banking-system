@@ -4,14 +4,18 @@ Description: A class that represents bank account.
 __author__ = "Gaganpreet Kaur"
 __version__ = "1.0.0"
 
-#  IMPORT STATEMENTS
 from datetime import date
 from abc import ABC, abstractmethod
+from patterns.observer.observer import Observer
+from patterns.observer.subject import Subject
 
-class BankAccount(ABC):
+
+class BankAccount(Subject, ABC):
     """
     BankAccount class. Represents bank account information of clients.
     """
+    LARGE_TRANSACTION_THRESHOLD: float = 9999.99
+    LOW_BALANCE_LEVEL: float = 50.0
     
     def __init__(self,
                  account_number: int,
@@ -49,6 +53,7 @@ class BankAccount(ABC):
              If the argument is not of date type then the attribute 
              should assigned to the current date.
         """
+        super().__init__()
         
         if isinstance(account_number, int):
             self.__account_number = account_number
@@ -104,19 +109,36 @@ class BankAccount(ABC):
         return self.__balance
     
     def update_balance (self, amount: float):
-        """   
-        Updates the balance by adding the specified amount
-        to the current balance (can be postive or negative).
-        Ensures the amount is either an integer or a float.
-        
+        """
+        Updates the balance by adding the given amount. 
+
         Args:
-            amount (float): The amount to add to the balance.
+            amount (float): The transaction amount.
+
+        Notifications:
+            - Sends a low balance warning if balance
+              falls below LOW_BALANCE_LEVEL.
+            - Sends an alert for transactions exceeding
+              LARGE_TRANSACTION_THRESHOLD.
         
         Returns:
             None: This method does not return anything.
         """
-        if isinstance(amount, (float,int)):
-            self.__balance += amount
+        self.__balance += amount
+        if self.__balance < self.LOW_BALANCE_LEVEL:
+            
+            message = (f"Low balance warning ${self.__balance:,.2f}: "
+            +f"on account {self.__account_number}.")
+            
+            self.notify(message)
+            
+        if abs(amount) > self.LARGE_TRANSACTION_THRESHOLD:
+            
+            message_2 = (f"Large transaction ${amount:,.2f}: "
+            +f"on account {self.__account_number}.")
+            
+            self.notify(message_2)
+
             
     def deposit (self, amount: float):
         """
@@ -169,12 +191,12 @@ class BankAccount(ABC):
             raise ValueError(f"Withdraw amount: {amount}"
                             +f" must be numeric.")    
         elif  amount < 0:
-            raise ValueError(f"Withdraw amount: ${round(amount, 2)} "
+            raise ValueError(f"Withdraw amount: ${amount:,.2f} "
                             +f"must be positive.")
         elif amount > self.__balance:
-            raise ValueError(f"Withdrawal amount: ${round(amount, 2)}"
+            raise ValueError(f"Withdrawal amount: ${amount:,.2f}"
                         +f" must not exceed the account balance: "
-                        +f"${round(self.__balance, 2)}")
+                        +f"${self.__balance:,.2f}")
         else:
             self.update_balance(-amount)
             
@@ -197,8 +219,36 @@ class BankAccount(ABC):
         
         Returns:
             float: The calculated service charge.
-        
         """
         pass
-            
+    
+    def attach(self, observer: Observer):
+        """
+        Adds an observer to the subject's list of observers.
+
+        Args:
+            observer (Observer): The observer instance to be added.
+        """
+        self._observers.append(observer)
+       
+        
+    def detach(self, observer: Observer):
+        """
+        Removes an observer from the subject's list of observers.
+
+        Args:
+            observer (Observer): The observer instance to be removed.
+        """
+        self._observers.remove(observer)
+        
+    
+    def notify(self, message: str):
+        """
+        Notifies all registered observers of a state change.
+
+        Args:
+            message (str): The message to be sent to all observers.
+        """
+        for observer in self._observers:
+            observer.update(message)
         

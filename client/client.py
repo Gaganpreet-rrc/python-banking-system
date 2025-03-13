@@ -4,12 +4,16 @@ Description: A class that represents client information.
 __author__ = "Gaganpreet Kaur"
 __version__ = "1.0.0"
 
-# IMPORT STATEMENTS
 from email_validator import validate_email, EmailNotValidError
+from patterns.observer.observer import Observer
+from utility import file_utils
+from datetime import datetime
 
-class Client:
+
+class Client(Observer):
     """
-    Client class. Represents clients information.
+    Client class which inherits from the Observer
+    Class.
     """
     def __init__(self, 
                  client_number: int,
@@ -60,7 +64,7 @@ class Client:
             
         try:
             validated_email = validate_email(email_address,
-                                             check_deliverability = False)
+                                        check_deliverability = False)
             self.__email_address = validated_email.normalized
             
         except EmailNotValidError:
@@ -119,3 +123,20 @@ class Client:
                 + f"{self.__first_name} "
                 + f"[{self.__client_number}] "
                 + f"- {self.__email_address}")
+        
+    def update(self, message: str):
+        """
+        Sends an email notification when the observer is updated.
+    
+        Args:
+            message (str): The notification message to be sent.
+        """
+        current_datetime = datetime.now()
+        subject = f"ALERT: Unusual Activity: {current_datetime}"
+        body = (f"Notification for {self.__client_number}: "
+        +f"{self.__first_name} {self.__last_name}: {message}")
+        
+        file_utils.simulate_send_email(self.__email_address,
+                                       subject,
+                                       body)
+        
