@@ -11,6 +11,8 @@ Assignment - 02: This is module 2 Assignment which is based on Abstraction, Inhe
 
 Assignment - 03: This is module 3 Assignment which is based on design patterns such as observer pattern, startegy pattern and exploring their implementation and use cases.
 
+Assignment - 04: This is module 4 Assignment which is based on Programming Paradigms.
+
 
 ## Encapsulation
 [use this section to explain how Encapsulation was achieved in the BankAccount class.]
