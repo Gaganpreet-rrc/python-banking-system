@@ -9,7 +9,7 @@ class LookupWindow(QMainWindow):
     """
     A Python class which allows users to retrieve Client 
     information.
-    """    
+    """
 
     def __init__(self):
         """
