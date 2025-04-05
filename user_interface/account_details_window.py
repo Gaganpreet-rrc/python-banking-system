@@ -11,15 +11,20 @@ from copy import copy
 
 class AccountDetailsWindow(DetailsWindow):
     """
-    A class used to display account details and perform bank account transactions.
+    A class used to display account details and
+    perform bank account transactions.
+    
     """
     balance_updated = Signal(BankAccount)
     
     def __init__(self, account: BankAccount) -> None:
         """
-        Initializes a new instance of the ExtendedAccountDetails window.
+        Initializes a new instance of the ExtendedAccountDetails
+        window.
+        
         Args:
             account: The bank account to be displayed.
+            
         Returns:
             None
         """
@@ -39,7 +44,9 @@ class AccountDetailsWindow(DetailsWindow):
     @Slot()       
     def __on_apply_transaction(self):
         """
-        Handles deposit or withdrawal transactions when a button is clicked.
+        Handles deposit or withdrawal transactions when a button 
+        is clicked.
+        
         - Validates the amount input.
         - Applies the appropriate transaction based on the sender.
         - Updates the displayed balance.
@@ -50,7 +57,8 @@ class AccountDetailsWindow(DetailsWindow):
         try:
             amount = float(self.transaction_amount_edit.text())
         except:
-            QMessageBox.information(self, "Invalid Data", "Amount must be numeric.")
+            QMessageBox.information(self, "Invalid Data",
+                                    "Amount must be numeric.")
             self.transaction_amount_edit.setFocus()
             return
         
@@ -68,7 +76,8 @@ class AccountDetailsWindow(DetailsWindow):
             
             self.transaction_amount_edit.setFocus()
         except Exception as e:
-            QMessageBox.information(self, f"{transaction_type} Failed", str(e))
+            QMessageBox.information(self, f"{transaction_type} Failed",
+                                    str(e))
             self.transaction_amount_edit.clear()
             
             self.transaction_amount_edit.setFocus()
@@ -77,7 +86,9 @@ class AccountDetailsWindow(DetailsWindow):
     @Slot()
     def __on_exit(self):
         """
-        Closes the Account Details window and returns control to the Client Lookup window.
+        Closes the Account Details window and returns
+        control to the Client Lookup window.
+        
         """
         self.close()
         
