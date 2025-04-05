@@ -95,7 +95,10 @@ class ClientLookupWindow(LookupWindow):
         if account_number in self.__accounts:
             selected_account = self.__accounts[account_number]
             account_details_window = AccountDetailsWindow(selected_account)
-        
+
+            account_details_window.balance_updated.connect(self.update_data)
+
+
             account_details_window.exec_()
             
         
@@ -104,6 +107,14 @@ class ClientLookupWindow(LookupWindow):
                                     "Bank Account selected does not exist.")
             
 
+    @Slot(BankAccount)
+    def update_data(self, account: BankAccount):
+        for row in range(self.account_table.rowCount()):
+            if int(self.account_table.item(row, 0).text()) == account.account_number:
+                self.account_table.item(row, 1).setText(f"${account.balance:.2f}")
+                self.__accounts[account.account_number] = account
+                update_data(account)  # From manage_data module
+                break
         
             
 
