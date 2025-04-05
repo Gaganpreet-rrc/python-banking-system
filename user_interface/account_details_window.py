@@ -26,9 +26,9 @@ class AccountDetailsWindow(DetailsWindow):
         super().__init__()
         
         if isinstance(account, BankAccount):
-            self.account = copy(account)
-            self.account_number_label.setText(str(self.account.account_number))
-            self.balance_label.setText(f"${self.account.balance:.2f}")
+            self.__account = copy(account)
+            self.account_number_label.setText(str(self.__account.account_number))
+            self.balance_label.setText(f"${self.__account.balance:.2f}")
             
             self.deposit_button.clicked.connect(self.__on_apply_transaction)
             self.withdraw_button.clicked.connect(self.__on_apply_transaction)
@@ -38,6 +38,15 @@ class AccountDetailsWindow(DetailsWindow):
         
     @Slot()       
     def __on_apply_transaction(self):
+        """
+        Handles deposit or withdrawal transactions when a button is clicked.
+        - Validates the amount input.
+        - Applies the appropriate transaction based on the sender.
+        - Updates the displayed balance.
+        - Emits a signal with the updated account.
+        - Handles and displays any transaction-related exceptions.
+        """
+        
         try:
             amount = float(self.transaction_amount_edit.text())
         except:
@@ -48,12 +57,12 @@ class AccountDetailsWindow(DetailsWindow):
         try:
             if self.sender() == self.deposit_button:
                 transaction_type = "Deposit"
-                self.account.deposit(amount)
+                self.__account.deposit(amount)
             elif self.sender() == self.withdraw_button:
                 transaction_type = "Withdraw"
-                self.account.withdraw(amount)
-            self.balance_label.setText(f"${self.account.balance:.2f}")
-            self.balance_updated.emit(self.account)
+                self.__account.withdraw(amount)
+            self.balance_label.setText(f"${self.__account.balance:.2f}")
+            self.balance_updated.emit(self.__account)
             
             self.transaction_amount_edit.clear()
             
@@ -67,5 +76,8 @@ class AccountDetailsWindow(DetailsWindow):
 
     @Slot()
     def __on_exit(self):
+        """
+        Closes the Account Details window and returns control to the Client Lookup window.
+        """
         self.close()
         

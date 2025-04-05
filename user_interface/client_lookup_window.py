@@ -14,6 +14,11 @@ from client.client import Client
 
 class ClientLookupWindow(LookupWindow):
     def __init__(self):
+        """
+        Initializes a new instance of the ClientLookupWindow.
+
+        This sets up the UI components and connects signals to their respective slots.
+        """
         super().__init__()
         
         self.__client_listing, self.__accounts = load_data()
@@ -25,6 +30,13 @@ class ClientLookupWindow(LookupWindow):
     @Slot()
     def __on_lookup_client(self):
         """
+        Handles the client lookup when the user enters a client number.
+
+        - Validates that the input is numeric.
+        - Displays an error message if the client number is not found.
+        - If found, displays client information and their related accounts
+        in the account_table with details like account number, balance,
+        date created, and account type.
         
         """
         try:
@@ -72,7 +84,9 @@ class ClientLookupWindow(LookupWindow):
     @Slot()
     def __on_text_changed(self):
         """
-        
+        Clears the account_table when the text in the client_number_edit field changes.
+
+        This ensures irrelevant data is removed before a new search.
         """
         self.account_table.setRowCount(0)
         
@@ -80,8 +94,16 @@ class ClientLookupWindow(LookupWindow):
     @Slot(int, int)
     def __on_select_account(self, row: int, column: int) ->None:
         """
+        Opens the Account Details Window for the selected account.
+
+        Connects the balance_updated signal to update the account table
+        if any transaction occurs. Displays an error if the selection is invalid.
         
+        Args:
+            row(int): The row index of the selected account in the account_table.
+            coumn (int): The column index of the selected cell in the account_table.
         """
+
         account_number_item = self.account_table.item(row, 0)
         
         account_number = int(account_number_item.text())
@@ -96,24 +118,30 @@ class ClientLookupWindow(LookupWindow):
             selected_account = self.__accounts[account_number]
             account_details_window = AccountDetailsWindow(selected_account)
 
-            account_details_window.balance_updated.connect(self.update_data)
-
+            account_details_window.balance_updated.connect(self.__update_data)
 
             account_details_window.exec_()
             
-        
         else:
             QMessageBox.information(self, "No Bank Account",
                                     "Bank Account selected does not exist.")
             
 
     @Slot(BankAccount)
-    def update_data(self, account: BankAccount):
+    def __update_data(self, account: BankAccount):
+        """
+        Updates the account table and internal account record with the latest balance.
+
+        Args:
+            account (BankAccount): The updated BankAccount object with the latest balance.
+        """
+
+        
         for row in range(self.account_table.rowCount()):
             if int(self.account_table.item(row, 0).text()) == account.account_number:
                 self.account_table.item(row, 1).setText(f"${account.balance:.2f}")
                 self.__accounts[account.account_number] = account
-                update_data(account)  # From manage_data module
+                update_data(account)  
                 break
         
             
