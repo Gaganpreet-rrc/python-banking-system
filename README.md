@@ -29,3 +29,7 @@ The Strategy Pattern is used in this application to calculate service charges dy
 ## Observer Pattern
 [use this section to explain how the Observer Pattern is being used in this application.]
 The Observer Pattern is used in this assignment by having BankAccount which is acting as a subject that notifies MinimumBalanceStrategy, ManagementFeeStrategy and OverdraftStrategy whenever account details change. This allows the strategy to automatically recalculate service charges, ensuring updates are applied dynamically. This approach improves maintainability and keeps the service charge logic adaptable to changes in account status.
+
+## Event-Driven Programming Paradigm
+[use this section to explain how the Event-Driven Programming Paradigm is employed in this application.]
+In this assignment, this application follows the Event-Driven Programming Paradigm by responding to user interactions such as button clicks and table cell selections. A pop-up message box appears when invalid input is detected or a transaction fails. The balance is automatically updated when a deposit or withdrawal occurs, using custom signals like balance_updated to reflect changes across windows in real time.

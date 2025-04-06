@@ -67,7 +67,7 @@ class ClientLookupWindow(LookupWindow):
                 
                 account_number_item = \
                 QTableWidgetItem(str(account.account_number))
-                balance = QTableWidgetItem(f"${account.balance:,.2f}") 
+                balance = QTableWidgetItem(f"${account.balance:,.2f}")
                 date_created_item = \
                 QTableWidgetItem(account._date_created.strftime("%Y-%m-%d")) 
                 account_type_item = \
