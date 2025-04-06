@@ -7,7 +7,8 @@ __version__ = "1.0.0"
 
 from datetime import date
 from bank_account.bank_account import BankAccount
-from patterns.strategy.overdraft_strategy import OverdraftStrategy
+from patterns.strategy.overdraft_strategy \
+import OverdraftStrategy
 
 class ChequingAccount(BankAccount):
     
@@ -41,14 +42,12 @@ class ChequingAccount(BankAccount):
             overdraft_limit (float): The maximum amount a balance can
             be overdrawn (below 0.00) before overdraft fees are applied.
             overdraft_rate (float):  The rate to which overdraft fees
-            will be applied.
-            
+            will be applied.    
             
         Raises:
             ValueError: if any of the arguments are invalid.
             - account number is not numeric.
             - client number is not numeric.
-            
             
         Notes:
             - If the argument of balance is float or int data type 
