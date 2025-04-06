@@ -1,7 +1,8 @@
 __author__ = "ACE Faculty"
 __version__ = "1.0.0"
 
-from PySide6.QtWidgets import QMainWindow, QWidget, QGridLayout, QLabel, QLineEdit, QPushButton, QTableWidget, QComboBox
+from PySide6.QtWidgets import QMainWindow, QWidget,\
+QGridLayout, QLabel, QLineEdit, QPushButton, QTableWidget, QComboBox
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QFont
 
@@ -19,7 +20,10 @@ class LookupWindow(QMainWindow):
         """
         super().__init__()
 
-        COLUMN_HEADERS = ["Account Number", "Balance", "Date Created", "Account Type"]
+        COLUMN_HEADERS = ["Account Number",
+                          "Balance",
+                          "Date Created",
+                          "Account Type"]
 
         self.setWindowTitle("Client Lookup")
         self.resize(600, 400) 
