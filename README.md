@@ -13,6 +13,8 @@ Assignment - 03: This is module 3 Assignment which is based on design patterns s
 
 Assignment - 04: This is module 4 Assignment which is based on Programming Paradigms.
 
+Assignment - 05: This is Module 5 Assignment which is based on Algorithms, Help Files and Distribution.
+
 
 ## Encapsulation
 [use this section to explain how Encapsulation was achieved in the BankAccount class.]
