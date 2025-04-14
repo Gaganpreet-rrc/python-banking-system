@@ -13,6 +13,8 @@ Assignment - 03: This is module 3 Assignment which is based on design patterns s
 
 Assignment - 04: This is module 4 Assignment which is based on Programming Paradigms.
 
+Assignment - 05: This is Module 5 Assignment which is based on Algorithms, Help Files and Distribution.
+
 
 ## Encapsulation
 [use this section to explain how Encapsulation was achieved in the BankAccount class.]
@@ -33,3 +35,8 @@ The Observer Pattern is used in this assignment by having BankAccount which is a
 ## Event-Driven Programming Paradigm
 [use this section to explain how the Event-Driven Programming Paradigm is employed in this application.]
 In this assignment, this application follows the Event-Driven Programming Paradigm by responding to user interactions such as button clicks and table cell selections. A pop-up message box appears when invalid input is detected or a transaction fails. The balance is automatically updated when a deposit or withdrawal occurs, using custom signals like balance_updated to reflect changes across windows in real time.
+
+## Filtering
+[use this section to explain how Filtering was incorporated into this application.]
+Filtering was added to make it easier for users to find specific account records. After looking up a client, the user can choose a category from a dropdown and type in a keyword to see only the matching results in the table. When a filter is applied, the button changes to "Reset" so the user knows the list is filtered. Clicking "Reset" shows all the records again. This helps users quickly find what they’re looking for without scrolling through everything.
+            
