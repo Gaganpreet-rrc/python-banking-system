@@ -180,15 +180,14 @@ class ClientLookupWindow(LookupWindow):
                     match = filter_edit_text in cell_text
                     self.account_table.setRowHidden(i, not match)
 
-        # Filtering applied
+
             self.__toggle_filter(True)
 
         else:
-        # Clear filter: show all rows
+
             for i in range(self.account_table.rowCount()):
                 self.account_table.setRowHidden(i, False)
 
-        # Filter removed
             self.__toggle_filter(False)
     
     
