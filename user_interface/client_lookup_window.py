@@ -165,7 +165,8 @@ class ClientLookupWindow(LookupWindow):
     @Slot()
     def __on_filter_clicked(self):
         """
-        
+        Slot to handle filter_button click event.
+        Applies or clears filter on account_table based on user input.
         """
         current_text_value = self.filter_button.text()
         if current_text_value == "Apply Filter":
@@ -193,7 +194,8 @@ class ClientLookupWindow(LookupWindow):
     
     def __toggle_filter(self, filter_on: bool):
         """
-        Toggles the state of filter widgets to indicate whether filtering is applied.
+        Toggles the state of filter widgets to indicate
+        whether filtering is applied.
         """
         self.filter_button.setEnabled(True)
 
